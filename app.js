@@ -1,16 +1,17 @@
 const   methodOverride = require("method-override"),
-        LocalStrategy  = require("passport-local"),
         express        = require("express"),
         app            = express(),
         bodyParser     = require("body-parser"),
         mongoose       = require("mongoose"),
         passport       = require("passport"),
+        seedDB         = require("./seeds"),
         flash          = require("connect-flash"),
         PORT           = 3000,
         User           = require("./models/user"),
         Garden         = require("./models/garden"),
         Plant          = require("./models/plant"),
-        Note           = require("./models/note");
+        Note           = require("./models/note"),
+        LocalStrategy  = require("passport-local");
 
 const   gardenRoutes    = require("./routes/gardens"),
         plantRoutes     = require("./routes/plants"),
@@ -21,11 +22,12 @@ mongoose.connect("mongodb://localhost/seed_scribe");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
+//seedDB();
 app.use(flash());
 
 // PASSPORT CONFIG
 app.use(require("express-session")({
-    secret: "Bambi is still the bestest",
+    secret: "It is not the fault of Mongo",
     resave: false,
     saveUninitialized: false
 }));
@@ -35,11 +37,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use("/", indexRoutes);
-app.use("/gardens", gardenRoutes);
-app.use("/gardens/:id/plants", plantRoutes);
-app.use("/gardens/:id/plants/:plant_id", noteRoutes);
-
 // help with navbar username indicator and flash messages
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
@@ -47,6 +44,13 @@ app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     next();
 });
+
+app.use("/", indexRoutes);
+app.use("/gardens", gardenRoutes);
+app.use("/gardens/:id/plants", plantRoutes);
+app.use("/gardens/:id/plants/:plant_id", noteRoutes);
+
+
 
 
 

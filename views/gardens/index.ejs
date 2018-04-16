@@ -1,1 +1,34 @@
-<h1>this is the view all gardens page</h1>
+<% include ../partials/header %>
+
+
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Welcome to SeedScribe</h1>
+            <p>Track your gardens, your plants, and learn from others!</p>
+            <p>
+                <a class="btn btn-primary btn-large" href="/gardens/new">Create your own garden journal</a>
+            </p>
+        </div>
+    </header>
+
+
+    <% gardens.forEach((garden) => { %>
+        <div class="col-md-3 col-sm-6">
+            <div class="thumbnail">
+                
+                <div class="caption">
+                    <h4><%= garden.name %></h4>
+                
+                </div>
+                <p>
+                    <a href="/gardens/<%= garden._id %>" class="btn btn-primary">More Info</a>
+                </p>
+            </div>
+        </div>
+    <% }); %>
+
+</div>
+
+<% include ../partials/footer %>

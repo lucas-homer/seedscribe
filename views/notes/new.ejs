@@ -1,1 +1,16 @@
-<h1>this is the create note page</h1>
+<% include ../partials/header %>
+<div class="container">
+    <div class="header">
+        <h2>Add a new note to <%= plant.plantName %>:</h2>
+    </div>
+    <form action="/gardens/<%= garden_id %>/plants/<%= plant._id %>" method="POST">
+        <div class="form-group">
+            <textarea class="form-control" name="note[text]"></textarea>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Save Note">
+    </form>
+</div>
+
+
+
+<% include ../partials/footer %>

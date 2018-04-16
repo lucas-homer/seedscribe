@@ -1,1 +1,46 @@
-<h1>this is the show garden page</h1>
+<% include ../partials/header %>
+
+<div class="container">
+    <h1><%= garden.name %></h1>
+
+    <p>
+        <%= garden.description %>
+    </p>
+    <p><em>Submitted by <%= garden.author.username %></em></p>
+    <% if(currentUser && garden.author.id.equals(currentUser._id)){ %>
+        <a class="btn btn-warning" href="/gardens/<%= garden._id %>/edit">Edit</a>
+        <form action="/gardens/<%= garden._id %>?_method=DELETE" method="POST">
+            <button id="delete-form" class="btn btn-danger">Delete</button>
+        </form>
+    <% } %>
+    <hr />
+    <p>
+        <a class="btn btn-primary" href="/gardens/<%= garden._id %>/plants/new">New Plant</a>
+    </p>
+    <% garden.plants.forEach((plant) => { %>
+        <div class="container">
+            <div class="row">
+                <div>
+                    <h4><%= plant.plantName %></h4>
+                    <p>
+                        <a href="/gardens/<%= garden._id %>/plants/<%= plant._id%>">See Plant Notes</a>
+                    </p>
+                </div>
+                
+                
+                <% if(currentUser && plant.author.id.equals(currentUser._id)){ %>
+                
+                    <a class="btn btn-xs btn-warning"
+                        href="/gardens/<%=garden._id%>/plants/<%=plant._id%>/edit">
+                        Edit
+                    </a>
+                    <form action="/gardens/<%=garden._id%>/plants/<%=plant._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-xs btn-danger">Delete Plant</button>
+                    </form>
+
+                <% } %>
+            </div>
+        </div>
+    <% }) %>
+</div>
+<% include ../partials/footer %>

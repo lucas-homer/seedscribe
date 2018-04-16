@@ -1,1 +1,21 @@
-<h1>make a new plant</h1>
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div style="width: 30%; margin: 30px auto;">
+            <h1 style="text-align: center">Add a Plant to Your Garden</h1>
+            <form action="/gardens/<%= garden._id %>/plants" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="plant[plantName]" placeholder="plant name">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Save</button>
+                </div>
+            </form>
+            <a href="/gardens">Back to Gardens</a>
+        </div>
+    </div>
+</div>
+
+
+<% include ../partials/footer %>
