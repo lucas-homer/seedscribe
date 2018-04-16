@@ -2,20 +2,23 @@
 
 <div class="container">
     <h1>Notes for <%= plant.plantName %>:</h1>
-    <a href="/gardens/<%= garden_id %>/plants/<%= plant._id %>/edit" class="btn btn-warning">Edit Plant</a>
-    <a href="/gardens/<%= garden_id %>/plants/<%= plant._id %>/new" class="btn btn-primary">New Note</a>
+    <% if(currentUser && plant.author.id.equals(currentUser._id)){ %>
+        <a href="/gardens/<%= garden_id %>/plants/<%= plant._id %>/edit" class="btn btn-warning">Edit Plant</a>
+        <a href="/gardens/<%= garden_id %>/plants/<%= plant._id %>/new" class="btn btn-primary">New Note</a>
+    <% } %>
     <% plant.notes.forEach((note) => { %>
         <div class="row">
             
             <li>
                 <strong><%= note.text %></strong>
                 <span><em>-- <%= note.created.toDateString() %></em></span><br />
-                <a class="btn btn-xs btn-warning" href="/gardens/<%=garden_id%>/plants/<%=plant._id%>/<%=note._id%>/edit">Edit</a>
-                
-                <form action="/gardens/<%=garden_id%>/plants/<%=plant._id%>/<%=note._id%>?_method=DELETE" method="POST">
-                    <button style="display: inline" class="btn btn-xs btn-danger">Delete</button>
-                </form>
-                
+                <% if(currentUser && note.author.id.equals(currentUser._id)){ %>
+                    <a class="btn btn-xs btn-warning" href="/gardens/<%=garden_id%>/plants/<%=plant._id%>/<%=note._id%>/edit">Edit</a>
+                    
+                    <form action="/gardens/<%=garden_id%>/plants/<%=plant._id%>/<%=note._id%>?_method=DELETE" method="POST">
+                        <button style="display: inline" class="btn btn-xs btn-danger">Delete</button>
+                    </form>
+                <% } %>
                 
 
             </li>
@@ -24,7 +27,7 @@
         
         
     <% }); %>
-            
+    <a class="btn btn-primary" href="/gardens/<%=garden_id%>">Back</a>
         
 
     

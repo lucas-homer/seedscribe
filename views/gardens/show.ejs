@@ -14,9 +14,11 @@
         </form>
     <% } %>
     <hr />
+    <% if(currentUser && garden.author.id.equals(currentUser._id)){ %>
     <p>
         <a class="btn btn-primary" href="/gardens/<%= garden._id %>/plants/new">New Plant</a>
     </p>
+    <% } %>
     <% garden.plants.forEach((plant) => { %>
         <div class="container">
             <div class="row">
