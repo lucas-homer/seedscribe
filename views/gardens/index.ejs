@@ -3,29 +3,33 @@
 
 
 <div class="container">
-    <header class="jumbotron">
-        <div class="container">
-            <h1>Welcome to SeedScribe</h1>
-            <p>Track your gardens, your plants, and learn from others!</p>
-            <p>
-                <a class="btn btn-primary btn-large" href="/gardens/new">Create your own garden journal</a>
-            </p>
+    
+    <div class="card medium">
+        <div class="card-image">
+            <img class="responsive-img" src="https://images.unsplash.com/photo-1510478946814-7229b607bfe0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b7d49d846377066a5999ac30a8f44d0f&auto=format&fit=crop&w=1350&q=80">
+            <span class="card-title"><h2>Journals</h2></span>
         </div>
-    </header>
+        <div class="card-content">
+            <p>As you journal through gardening, learn from yourself and others' journals.</p>
+        </div>
+        <div class="card-action">
+            <a class="waves-effect waves-light btn green darken-4" href="/gardens/new"><i class="material-icons left">add</i>Create Garden</a>
+        </div>
+    </div>
+    
 
 
     <% gardens.forEach((garden) => { %>
-        <div class="col-md-3 col-sm-6">
-            <div class="thumbnail">
-                
-                <div class="caption">
+        <div class="card grey lighten-2">
+                <div class="card-content">
                     <h4><%= garden.name %></h4>
-                
                 </div>
-                <p>
-                    <a href="/gardens/<%= garden._id %>" class="btn btn-primary">More Info</a>
-                </p>
-            </div>
+                <div class="card-action">
+                    <p>
+                        <a href="/gardens/<%= garden._id %>" class="waves-effect waves-light btn green">
+                            <i class="material-icons left">add</i>More Info</a>
+                    </p>
+                </div>
         </div>
     <% }); %>
 

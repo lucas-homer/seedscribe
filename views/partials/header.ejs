@@ -2,45 +2,36 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" 
-              href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" 
-              integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" 
-              crossorigin="anonymous">        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>SeedScribe</title>
     </head>
     <body>
-        <nav class="navbar navbar-light bg-light">
-            <div class="container-fluid">
+        <nav class="grey darken-3" role="navigation">
+            <div class="nav-wrapper container">
+                <a class="brand-logo" href="/">SeedScribe</a>
                 
-                <a class="navbar-brand" href="/">SeedScribe</a>
-                <a class="navbar-nav" href="/gardens">All Gardens</a>
-                
-                
-                <div class="navbar-nav navbar-right">
+                <ul class="right">
                     <% if(!currentUser){ %>
-                        <a class="nav-item" href="/login">Login</a>
-                        <a class="nav-item" href="/register">Signup</a>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Sign Up</a></li>
                     <% } else { %>
-                        <a class="nav-item">Welcome, <strong><%= currentUser.username %></strong>!</a>
-                        <a class="nav-item" href="/logout">Logout</a>
+                        <li><a>Welcome <strong><%= currentUser.username %></strong>!</a></li>
+                        <li><a href="/logout">Logout</a></li>
                     <% } %>
-                </div>
-                
-                
-                
+                </ul>
             </div>
         </nav>
         <div class="container">
             <% if(error && error.length > 0){ %>
-                <div class="alert alert-danger" role="alert">
-                    <%= error %>
+                <div class="card-panel red darken-4" role="alert">
+                    <span class="white-text"><i class="material-icons">error_outline</i> <%= error %></span>
                 </div>
             <% } %>
             <% if(success && success.length > 0){ %>
-            <div class="alert alert-success" role="alert">
-                <%= success %>
+            <div class="card-panel green darken-4" role="alert">
+                <span class="white-text"><i class="material-icons">done</i><%= success %></span>
             </div>
             <% } %>
         </div>
