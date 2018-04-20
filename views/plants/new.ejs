@@ -1,20 +1,31 @@
 <% include ../partials/header %>
 
 <div class="container">
-    <div class="row">
-        <div style="width: 30%; margin: 30px auto;">
-            <h1 style="text-align: center">Add a Plant to Your Garden</h1>
-            <form action="/gardens/<%= garden._id %>/plants" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="plant[plantName]" placeholder="plant name">
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Save</button>
-                </div>
-            </form>
-            <a href="/gardens/<%= garden._id%>">Back</a>
+    
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">
+                <h4 style="text-align: center">Add Plant to Garden</h4>
+            </span>
+            <div class="row">
+                <form action="/gardens/<%= garden._id %>/plants" method="POST">
+                    <div class="row">
+                        <div class="input-field">
+                            <input type="text" name="plant[plantName]" placeholder="plant name">
+                        </div>    
+                    </div>
+                    
+                    <button class="waves-effect waves-light btn green darken-4"><i class="material-icons left">local_florist</i>Save</button>
+                    
+                </form>   
+            </div>
         </div>
     </div>
+    <div class="row">
+        <a class="waves-effect waves-green btn-flat" href="/gardens/<%= garden._id%>"><i class="material-icons">arrow_back</i></a>
+    </div>
+    
+    
 </div>
 
 

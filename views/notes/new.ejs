@@ -1,16 +1,31 @@
 <% include ../partials/header %>
+
 <div class="container">
-    <div class="header">
-        <h2>Add a new note to <%= plant.plantName %>:</h2>
-    </div>
-    <form action="/gardens/<%= garden_id %>/plants/<%= plant._id %>" method="POST">
-        <div class="form-group">
-            <textarea class="form-control" name="note[text]"></textarea>
+
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">
+                <h4 style="text-align: center">Add Note to <%=plant.plantName%></h4>
+            </span>
+            <div class="row">
+                <form action="/gardens/<%= garden_id %>/plants/<%= plant._id %>" method="POST">
+                    <div class="row">
+                        <div class="input-field">
+                            <textarea type="text" name="note[text]"></textarea>
+                        </div>    
+                    </div>
+                    
+                    <button class="waves-effect waves-light btn green darken-4"><i class="material-icons left">done</i>Save</button>
+                    
+                </form>   
+            </div>
         </div>
-        <input type="submit" class="btn btn-primary" value="Save Note">
-    </form>
+    </div>
+
+    <div class="row">
+        <a class="waves-effect waves-green btn-flat" href="/gardens/<%= garden_id%>/plants/<%=plant._id%>"><i class="material-icons">arrow_back</i></a>
+    </div>
+
 </div>
-
-
 
 <% include ../partials/footer %>

@@ -1,23 +1,35 @@
 <% include ../partials/header %>
 
 <div class="container">
-    <div class="row">
-        <h1 style="text-align: center">Create a new garden</h1>
-        <div style="width: 30%; margin: 30px auto;">
-            <form action="/gardens" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="name" placeholder="garden name">
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" type="text" name="description" placeholder="garden description"></textarea>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary">Create</button>
-                </div>
-            </form>
-            <a href="/gardens">View all gardens</a>
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">
+                <h4 style="text-align: center">Create Garden</h4>
+            </span>
+            <div>
+                <form action="/gardens" method="POST">
+                    <div class="row">
+                        <div class="input-field">
+                            <input type="text" name="name" placeholder="garden name">
+                        </div>    
+                    </div>
+                    <div class="row">
+                        <div class="input-field">
+                            <textarea type="text" name="description" placeholder="garden description"></textarea>
+                        </div>    
+                    </div>
+                    
+                    <button class="waves-effect waves-light btn green darken-4"><i class="material-icons left">local_florist</i>Create</button>
+                    
+                </form>   
+            </div>
         </div>
-        
+    </div>
+    
+    <div class="row">
+        <a class="waves-effect waves-green btn-flat" href="/gardens"><i class="material-icons">arrow_back</i></a>
     </div>
 </div>
+
 <% include ../partials/footer %>
+

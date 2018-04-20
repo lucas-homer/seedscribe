@@ -1,13 +1,22 @@
 <% include partials/header %>
 <div class="container">
-    <h2>Login</h2>
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title"><h4>Login</h4></span>
+            <form action="/login" method="POST">
+                <div class="row">
+                    <input class="input-field" type="text" name="username" placeholder="username">
+                </div>
+                <div class="row">
+                    <input class="input-field" type="password" name="password" placeholder="password">
+                </div>
+                <button class="btn green darken-4 waves-effect waves-light" type="submit">Submit<i class="material-icons right">send</i></button>
+            </form>
+        </div>
+    </div>
     
-    <form action="/login" method="POST">
-        <input type="text" name="username" placeholder="username">
-        <input type="password" name="password" placeholder="password">
-        <button class="btn waves-effect waves-cyan" type="submit">Submit<i class="material-icons right">send</i></button>
-    </form>
 </div>
 
 
 <% include partials/footer %>
+

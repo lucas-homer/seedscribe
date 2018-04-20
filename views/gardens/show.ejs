@@ -2,12 +2,15 @@
 
 
 <div class="container">
+    <div class="row">
+        <a class="waves-effect waves-green btn-flat" href="/gardens"><i class="material-icons large left">arrow_back</i>Back to Gardens</a>
+    </div>
     <div class="card">
         <div class="card-content">
             <span class="card-title">
                 <h3><%= garden.name %></h3>
             </span>
-            <p><em>Submitted by <%= garden.author.username %></em></p>
+            <p><em>Tended by <%= garden.author.username %></em></p>
             <p><%= garden.description %></p>
         </div>
         <% if(currentUser && garden.author.id.equals(currentUser._id)){ %>
@@ -18,7 +21,7 @@
                 </form>
                 <p>
                     <a class="waves-effect waves-light btn green darken-4" href="/gardens/<%= garden._id %>/plants/new">
-                        <i class="material-icons left">add</i>New Plant</a>
+                        <i class="material-icons left">local_florist</i>New Plant</a>
                 </p>
             </div>
         <% } %>
@@ -32,13 +35,13 @@
             <% garden.plants.forEach((plant) => { %>
                 <li class="collection-item">
                     <div>
-                        <div>
+                        <div class="row">
                             <strong><%= plant.plantName %></strong>
                             <a href="/gardens/<%= garden._id %>/plants/<%= plant._id%>" 
-                                class="secondary-content"><i class="material-icons">send</i></a> 
+                                class="secondary-content"><i class="material-icons green-text text-darken-4">send</i></a> 
                         </div>
                     <% if(currentUser && plant.author.id.equals(currentUser._id)){ %>
-                        <div>
+                        <div class="row">
                             
                             <p><a class="btn-small amber"
                             href="/gardens/<%=garden._id%>/plants/<%=plant._id%>/edit">
