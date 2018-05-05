@@ -6,7 +6,7 @@ const   methodOverride = require("method-override"),
         passport       = require("passport"),
         seedDB         = require("./seeds"),
         flash          = require("connect-flash"),
-        PORT           = 3000,
+        // PORT           = 3000,
         User           = require("./models/user"),
         Garden         = require("./models/garden"),
         Plant          = require("./models/plant"),
@@ -53,10 +53,8 @@ app.use("/gardens/:id/plants/:plant_id", noteRoutes);
 
 
 
-
-
 // SERVER LISTENER
-// app.listen(process.env.PORT, process.env.IP);
-app.listen(PORT, () => {
-    console.log("Server listening on port " + PORT + "...");
-});
+app.listen(process.env.PORT, process.env.IP);
+// app.listen(PORT, () => {
+//     console.log("Server listening on port " + PORT + "...");
+// });
