@@ -6,6 +6,7 @@ const   methodOverride = require("method-override"),
         passport       = require("passport"),
         seedDB         = require("./seeds"),
         flash          = require("connect-flash"),
+        mlabConnection = require("./secrets");
         // PORT           = 3000,
         User           = require("./models/user"),
         Garden         = require("./models/garden"),
@@ -18,7 +19,7 @@ const   gardenRoutes    = require("./routes/gardens"),
         noteRoutes      = require("./routes/notes"),
         indexRoutes     = require("./routes/index");
 
-mongoose.connect("mongodb://baxter:lonnie@ds215910.mlab.com:15910/seedscribe");
+mongoose.connect(mlabConnection);
 // mongodb://localhost/seed_scribe
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
